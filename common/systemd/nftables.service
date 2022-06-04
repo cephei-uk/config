@@ -5,8 +5,8 @@
 [Unit]
 Description=nftables
 Documentation=man:nft(8) http://wiki.nftables.org
-Wants=network-pre.target
-Before=network-pre.target shutdown.target
+Before=shutdown.target
+After=network-online.target
 Conflicts=shutdown.target
 DefaultDependencies=no
 
@@ -21,4 +21,4 @@ ExecReload=/usr/sbin/nft -f /etc/nftables.conf
 ExecStop=/usr/sbin/nft flush ruleset
 
 [Install]
-WantedBy=sysinit.target
+WantedBy=default.target

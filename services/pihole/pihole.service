@@ -21,7 +21,6 @@ ExecStart=/usr/bin/podman run \
     --sdnotify=conmon \
     --replace \
     --name=pihole \
-    --pod=pihole \
     --cap-add NET_ADMIN \
     -e FTLCONF_REPLY_ADDR4=10.0.0.2 \
     -e VIRTUAL_HOST=pihole.cephei.uk \
