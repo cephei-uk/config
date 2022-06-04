@@ -1,0 +1,33 @@
+version: "2"
+networks:
+  lan:
+    external:
+      name: lan
+services:
+  pihole:
+    container_name: pihole
+    image: pihole/pihole:latest
+    hostname: pihole
+    domainname: cephei.uk
+    cap_add:
+      - NET_ADMIN
+    networks:
+      lan:
+        ipv4_address: 10.0.0.2
+    dns:
+      - 127.0.0.1
+    ports:
+      - 443/tcp
+      - 53/tcp
+      - 53/udp
+      - 67/udp
+      - 80/tcp
+    environment:
+      FTLCONF_REPLY_ADDR4: 10.0.0.2
+      VIRTUAL_HOST: pihole.cephei.uk
+    env_file:
+      - /etc/secrets/pihole.env
+    volumes:
+      - '/var/opt/pihole/etc-pihole:/etc/pihole'
+      - '/var/opt/pihole/etc-dnsmasq.d:/etc/dnsmasq.d'
+    restart: unless-stopped
