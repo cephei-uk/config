@@ -1,0 +1,6 @@
+[NetDev]
+Name=br0
+Kind=macvlan
+
+[MACVLAN]
+Mode=bridge

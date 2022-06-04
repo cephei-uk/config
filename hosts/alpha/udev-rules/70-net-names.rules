@@ -1,0 +1,2 @@
+SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="00:30:18:ae:04:ea", NAME="lan-port0"
+SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="00:30:18:ae:04:eb", NAME="wan"

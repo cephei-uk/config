@@ -1,0 +1,5 @@
+[Match]
+Name=lan-port0
+
+[Network]
+MACVLAN=lan
