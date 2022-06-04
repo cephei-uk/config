@@ -1,0 +1,24 @@
+# From https://salsa.debian.org/pkg-netfilter-team/pkg-nftables
+# Copyright: 2008 Patrick McHardy <kaber@trash.net>
+# SPDX-License-Identifier: GPL-2.0-only
+
+[Unit]
+Description=nftables
+Documentation=man:nft(8) http://wiki.nftables.org
+Wants=network-pre.target
+Before=network-pre.target shutdown.target
+Conflicts=shutdown.target
+DefaultDependencies=no
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+StandardInput=null
+ProtectSystem=full
+ProtectHome=true
+ExecStart=/usr/sbin/nft -f /etc/nftables.conf
+ExecReload=/usr/sbin/nft -f /etc/nftables.conf
+ExecStop=/usr/sbin/nft flush ruleset
+
+[Install]
+WantedBy=sysinit.target
