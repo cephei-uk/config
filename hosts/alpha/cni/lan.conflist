@@ -1,0 +1,29 @@
+{
+   "cniVersion": "0.4.0",
+   "name": "lan",
+   "plugins": [
+      {
+         "type": "macvlan",
+         "master": "lan-port0",
+         "ipam": {
+            "type": "host-local",
+            "routes": [
+               {
+                  "dst": "0.0.0.0/0"
+               }
+            ],
+            "ranges": [
+               [
+                  {
+                     "subnet": "10.0.0.0/24",
+                     "gateway": "10.0.0.1"
+                  }
+               ]
+            ]
+         },
+         "capabilities": {
+            "ips": true
+         }
+      }
+   ]
+}
