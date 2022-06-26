@@ -1,0 +1,12 @@
+[Unit]
+Description=%i pod (podman-compose)
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+WorkingDirectory=/etc/containers/compose/%i
+ExecStart=/usr/bin/podman-compose up --remove-orphans
+ExecStop=/usr/bin/podman-compose down
+
+[Install]
+WantedBy=multi-user.target
