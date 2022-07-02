@@ -5,8 +5,8 @@ After=network-online.target
 
 [Service]
 WorkingDirectory=/etc/containers/compose/%i
-ExecStart=/usr/bin/podman-compose up --remove-orphans
-ExecStop=/usr/bin/podman-compose down
+ExecStart=/usr/local/bin/podman-compose up --remove-orphans
+ExecStop=/usr/local/bin/podman-compose down
 
 [Install]
 WantedBy=multi-user.target
